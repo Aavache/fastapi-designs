@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response
 
 app = FastAPI()
 
@@ -7,6 +7,7 @@ sample_data = {"name": "John Doe", "age": 30}
 
 @app.get("/data")
 async def get_data(request: Request):
+    """The content format is determined by the Accept header"""
     accept_header = request.headers.get("accept")
     
     if "application/json" in accept_header:

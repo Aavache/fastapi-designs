@@ -3,7 +3,9 @@ from typing import Optional
 
 app = FastAPI()
 
+
 class DatabaseConnection:
+    """Singleton class for database connection"""
     _instance = None
     
     def __new__(cls):
@@ -19,8 +21,10 @@ class DatabaseConnection:
         # Simulated query execution
         return f"Executing query: {query} using connection: {self.connection_string}"
 
+
 @app.get("/")
 async def execute_query(query: str, conn: Optional[DatabaseConnection] = None):
+    """Execute a query using a database connection"""
     if conn is None:
         conn = DatabaseConnection()
     

@@ -1,31 +1,43 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import List
+
 
 app = FastAPI()
 
 # Store registered webhook URLs
 webhook_urls = []
 
-# Webhook payload model
+
 class WebhookPayload(BaseModel):
+    """Webhook payload model"""
     event: str
     data: dict
 
-# Register a webhook URL
+
+def send_payload(url, event, data):
+    """Send payload to a webhook URL (simulate by printing here)"""
+    print(f"Sending {event} payload to {url}: {data}")
+
+
 @app.post("/register")
 def register_webhook(url: str):
+    """Register a webhook URL"""
     webhook_urls.append(url)
     return {"message": "Webhook registered successfully"}
 
-# Trigger a webhook event
+
 @app.post("/trigger")
 def trigger_webhook(payload: WebhookPayload):
+    """Trigger a webhook event"""
     event = payload.event
     data = payload.data
     
     for url in webhook_urls:
-        # Send the payload to the registered webhook URLs (simulate by printing here)
-        print(f"Sending {event} event to {url}: {data}")
+        send_payload(url, event, data)
     
     return {"message": "Webhook event triggered"}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

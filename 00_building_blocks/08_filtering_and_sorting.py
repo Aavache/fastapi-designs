@@ -2,19 +2,23 @@ from enum import Enum
 from fastapi import FastAPI, HTTPException, Query
 from typing import List
 
+
 app = FastAPI()
 
 # Example data (replace this with your actual data source)
 fake_data = [{"id": i, "name": f"Item {i}", "category": f"Category {i % 3 + 1}"} for i in range(1, 101)]
+
 
 class SortField(str, Enum):
     id = "id"
     name = "name"
     category = "category"
 
+
 class SortOrder(str, Enum):
     asc = "asc"
     desc = "desc"
+
 
 @app.get("/items/", response_model=List[dict])
 def get_items(skip: int = Query(0, description="Number of items to skip"),
@@ -32,13 +36,21 @@ def get_items(skip: int = Query(0, description="Number of items to skip"),
     end_idx = skip + limit
     
     filtered_items = fake_data
+    # Filtering
     if filter_category:
         filtered_items = [item for item in filtered_items if item["category"] == filter_category]
     
+    # Sorting
     reverse_sort = False
     if sort_order == SortOrder.desc:
         reverse_sort = True
-    
     sorted_items = sorted(filtered_items, key=lambda x: x[sort_field], reverse=reverse_sort)
+
+    # Pagination
     paginated_items = sorted_items[start_idx:end_idx]
     return paginated_items
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

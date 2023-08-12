@@ -1,12 +1,10 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, HTTPException
 from fastapi.security import APIKeyHeader
-from starlette.middleware import Middleware
-from starlette.middleware import Middleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from datetime import datetime, timedelta
 
-app = FastAPI()
 
+app = FastAPI()
 # API Key Header
 api_key_header = APIKeyHeader(name="X-API-Key")
 
@@ -14,8 +12,9 @@ api_key_header = APIKeyHeader(name="X-API-Key")
 api_keys = {"supersecretapikey": {"rate_limit": 5, "reset_interval": timedelta(minutes=1)}}
 api_usage = {}
 
-# Rate Limiting Middleware
+
 class RateLimitMiddleware(BaseHTTPMiddleware):
+    """Rate Limiting Middleware"""
     async def dispatch(self, request, call_next):
         api_key = request.headers.get("x-api-key")
         if api_key:
@@ -37,9 +36,16 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         else:
             raise HTTPException(status_code=401, detail="API key required")
 
+
 # Apply Rate Limiting Middleware
 app.add_middleware(RateLimitMiddleware)
+
 
 @app.get("/limited-endpoint")
 def limited_endpoint():
     return {"message": "This is a limited endpoint."}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

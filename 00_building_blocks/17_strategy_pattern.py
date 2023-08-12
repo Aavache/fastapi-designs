@@ -1,19 +1,26 @@
-'''Strategy pattern'''
+"""Strategy pattern, where multiple methods are available 
+to perform a task
+"""
 from fastapi import FastAPI
 
+
 app = FastAPI()
+
 
 class PaymentStrategy:
     def pay(self, amount):
         pass
 
+
 class CreditCardPayment(PaymentStrategy):
     def pay(self, amount):
         return f"Paid {amount} using Credit Card"
 
+
 class PayPalPayment(PaymentStrategy):
     def pay(self, amount):
         return f"Paid {amount} using PayPal"
+
 
 class PaymentContext:
     def __init__(self, strategy):
@@ -21,6 +28,7 @@ class PaymentContext:
 
     def process_payment(self, amount):
         return self._strategy.pay(amount)
+
 
 @app.get("/")
 async def make_payment(payment_method: str, amount: int):
@@ -34,3 +42,8 @@ async def make_payment(payment_method: str, amount: int):
     context = PaymentContext(strategy)
     result = context.process_payment(amount)
     return {"message": result}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

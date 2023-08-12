@@ -5,6 +5,7 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
 
+
 app = FastAPI()
 
 # Simulated database of users and hashed passwords
@@ -23,27 +24,28 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 # API Key Header
 api_key_header = APIKeyHeader(name="X-API-Key")
-
 # OAuth2 Password Bearer
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-# Generate JWT token
+
 def create_access_token(data: dict, expires_delta: timedelta):
+    """Generate JWT token"""
     to_encode = data.copy()
     expire = datetime.utcnow() + expires_delta
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-# User model
+
 class User(BaseModel):
+    """User model"""
     username: str
 
-# OAuth2 Password Bearer dependency
+
 async def get_current_user(token: str = Depends(oauth2_scheme)):
+    """OAuth2 Password Bearer dependency"""
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -59,25 +61,29 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         raise credentials_exception
     return User(**token_data)
 
-# API Key dependency
+
 async def get_api_key(api_key: str = Depends(api_key_header)):
+    """API Key dependency"""
     if api_key != "supersecretapikey":
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid API key")
     return api_key
 
-# Endpoint with API key authorization
+
 @app.get("/api-key-protected")
 def api_key_protected(api_key: str = Depends(get_api_key)):
+    """Endpoint with API key authorization"""
     return {"message": "API key authorized"}
 
-# Endpoint with OAuth2 token authorization
+
 @app.get("/token-protected")
 def token_protected(current_user: User = Depends(get_current_user)):
+    """Endpoint with OAuth2 token authorization"""
     return {"message": f"Hello, {current_user.username}"}
 
-# Token endpoint
+
 @app.post("/token")
 def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+    """Token endpoint"""
     user = fake_users_db.get(form_data.username)
     if user is None or not pwd_context.verify(form_data.password, user["password"]):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect credentials")
@@ -85,3 +91,7 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     access_token = create_access_token(data={"sub": form_data.username}, expires_delta=access_token_expires)
     return {"access_token": access_token, "token_type": "bearer"}
 
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
