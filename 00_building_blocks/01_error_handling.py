@@ -1,3 +1,4 @@
+"""Implementation of a custom exception handler"""
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 

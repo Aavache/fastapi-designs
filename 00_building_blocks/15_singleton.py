@@ -1,3 +1,7 @@
+"""The idea of singleton is to have only one instance of a class 
+in the entire application. It is particularly useful when you want
+to have a single connection to a database or a single logger instance
+"""
 from fastapi import FastAPI
 from typing import Optional
 
@@ -30,3 +34,8 @@ async def execute_query(query: str, conn: Optional[DatabaseConnection] = None):
     
     result = conn.execute_query(query)
     return {"result": result}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

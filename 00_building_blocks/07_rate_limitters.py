@@ -1,3 +1,4 @@
+"""Limiting the number of requests a client can make to an endpoint"""
 from fastapi import FastAPI, HTTPException
 from fastapi.security import APIKeyHeader
 from starlette.middleware.base import BaseHTTPMiddleware

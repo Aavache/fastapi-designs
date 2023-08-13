@@ -1,3 +1,4 @@
+"""URL versioning example"""
 from fastapi import FastAPI
 
 

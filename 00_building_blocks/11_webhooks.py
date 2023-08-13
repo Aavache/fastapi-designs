@@ -1,3 +1,8 @@
+"""We can attach a webhook URL to a specific event, and when that 
+event occurs, we can send a payload to the webhook URL. This is
+similar to callbacks, but instead of the client notifying the server,
+the server notifies the client.
+"""
 from fastapi import FastAPI
 from pydantic import BaseModel
 

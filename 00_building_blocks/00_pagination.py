@@ -23,3 +23,8 @@ def get_items(skip: int = Query(0, description="Number of items to skip"),
      
     items = fake_data[start_idx:end_idx]
     return items
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

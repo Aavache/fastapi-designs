@@ -1,3 +1,8 @@
+"""Here we show how to implement authentication in FastAPI using JWT tokens.
+There are 2 types of authentication:
+    - API Key Header: a simple API key based authentication mechanism
+    - OAuth2 Password: a token based authentication mechanism
+"""
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import APIKeyHeader, OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel
@@ -17,9 +22,11 @@ fake_users_db = {
     }
 }
 
-# Security configuration
+# Security configuration, ideally you could store 
+# these in environment variables
 SECRET_KEY = "secret_key_here"
 ALGORITHM = "HS256"
+API_KEY = "supersecretapikey"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 # Password hashing
@@ -64,7 +71,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 
 async def get_api_key(api_key: str = Depends(api_key_header)):
     """API Key dependency"""
-    if api_key != "supersecretapikey":
+    if api_key != API_KEY:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid API key")
     return api_key
 

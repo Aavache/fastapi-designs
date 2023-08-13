@@ -1,3 +1,6 @@
+"""Header versioning, this a better approach than URL versioning
+as the actual address doesn't change
+"""
 from fastapi import FastAPI, Header, HTTPException
 
 

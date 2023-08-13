@@ -1,3 +1,9 @@
+"""Callbacks involve notifying the client when a long-running 
+task is completed. While FastAPI doesn't directly handle callbacks, 
+you can design your API to accept a callback URL from the client 
+and then trigger the callback when the task is done.
+"""
+
 from fastapi import FastAPI, BackgroundTasks
 import time
 import httpx

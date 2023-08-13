@@ -55,3 +55,7 @@ async def get_all_items():
     items = item_repository.get_all_items()
     return {"items": [item.__dict__ for item in items]}
 
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

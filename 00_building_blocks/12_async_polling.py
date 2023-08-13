@@ -27,3 +27,8 @@ async def start_task(background_tasks: BackgroundTasks):
 async def check_task(task_id: int):
     status = operation_status.get(task_id, "not found")
     return {"task_id": task_id, "status": status}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

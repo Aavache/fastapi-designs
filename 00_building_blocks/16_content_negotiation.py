@@ -21,3 +21,8 @@ async def get_data(request: Request):
         return Response(content=xml_data, media_type="application/xml")
     
     return sample_data  # If no
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

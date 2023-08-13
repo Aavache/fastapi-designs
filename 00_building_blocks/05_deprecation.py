@@ -1,3 +1,4 @@
+"""Deprecation warning example"""
 from fastapi import FastAPI, HTTPException, status
 
 

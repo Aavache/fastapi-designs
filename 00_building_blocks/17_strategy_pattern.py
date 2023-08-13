@@ -1,5 +1,5 @@
 """Strategy pattern, where multiple methods are available 
-to perform a task
+to perform the same task
 """
 from fastapi import FastAPI
 

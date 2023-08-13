@@ -1,3 +1,4 @@
+"""Example of the decorator pattern"""
 from fastapi import FastAPI
 
 

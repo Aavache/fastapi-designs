@@ -1,3 +1,4 @@
+"""Example of a decorator-based authentication mechanism."""
 from fastapi import FastAPI
 
 
