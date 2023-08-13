@@ -1,47 +1,54 @@
-# FastAPI Examples
+<h1 style="text-align: center;">FastAPI Designs</h1>
 
-This repository contains a collection of practical examples demonstrating various concepts and best practices for building powerful APIs using FastAPI. Each example showcases a specific aspect of API development, providing clear explanations and code samples to help you understand and implement these concepts effectively.
+This repository contains a collection of practical examples demonstrating various concepts and best practices for building powerful APIs using FastAPI. Each example showcases a specific aspect of API development and code samples to help you understand and implement these concepts effectively.
 
-## Table of Contents
+## Installation
 
-- [Asynchronous Operations](#asynchronous-operations)
-- [Content Negotiation](#content-negotiation)
-- [Deprecation Strategy](#deprecation-strategy)
-- [Idempotence](#idempotence)
-- [Statelessness](#statelessness)
+Install your dependencies with the following command:
 
-## Asynchronous Operations
+```sh
+pip install -r requirements.txt
+```
 
-Experience the power of asynchronous programming in FastAPI. Learn how to handle long-running tasks without blocking your API using the `async` and `await` syntax. Discover the benefits of improved responsiveness and scalability while maintaining efficient request handling.
+## Available Content
 
-## Content Negotiation
+We have 2 sections, building blocks and APIs.
 
-Explore content negotiation and its role in allowing clients to request specific data formats, such as JSON or XML. Learn how to use the `Accept` header to facilitate flexible data exchange while ensuring a seamless and user-friendly experience.
+1. [Building blocks]()
+    1. [Pagination]()
+    2. [Error handling]()
+    3. [URL Versioning]() 
+    4. [Header Versioning]()
+    5. [Caching]()
+    6. [Deprecation]()
+    7. [Decorator for auth]()
+    8. [Decorator]()
+    9. [Rate limitter]()
+    10. [Filtering and sorting]()
+    11. [Bulk operations]()
+    12. [Authentification]()
+    13. [WebHooks]()
+    14. [Async Polling]()
+    15. [Async Callback]()
+    16. [HATEOAS]()
+    17. [Singleton]()
+    18. [Content negotiation]()
+    19. [Strategy pattern]()
+    20. [Repository pattern]()
+2. [APIs]():
+    1. [RESTFul]()
+    2. [Message Queue]()
+    3. [RPC]()
+    4. [Event driven]()
+    5. [Hypermedia]()
+    6. [SOAP]()
 
-## Deprecation Strategy
+## Disclaimar
 
-Master the art of deprecating old API versions gracefully. Dive into versioning, clear deprecation warnings, and a well-defined migration strategy. Understand the importance of effective communication to guide users through transitions and keep your API ecosystem up-to-date.
+This repository shows some API patterns and building blocks in a simplified manner, therefore it can serve as inspiration for real-case applications however it may require adaption, for instance, for some example we use a in-memory dictionary to similulate a database.
 
-## Idempotence
+## References
 
-Uncover the significance of designing idempotent APIs. Explore how to ensure that repeated requests have the same effect as making them once. Learn about the reliability, scalability, and predictability benefits that idempotence brings to your API architecture.
-
-## Statelessness
-
-Discover the elegance of stateless API design. Embrace the principles of simplicity, scalability, and reliability by building APIs that don't rely on server-side state or context. Learn how this approach improves caching, load balancing, and redundancy in your API ecosystem.
-
-## Get Started
-
-Each example is contained in its own directory with detailed explanations and code snippets. To get started, simply navigate to the example you're interested in and follow the README instructions. You'll find clear steps, sample code, and explanations to guide you through the process.
-
-## Contribution
-
-This repository is open to contributions. If you have an idea for an additional example or want to enhance existing ones, feel free to submit a pull request. Your contributions can help others learn and excel in API development using FastAPI.
-
-## License
-
-This repository is licensed under the [MIT License](LICENSE).
-
----
-
-Enjoy your journey into the world of FastAPI! Each example is designed to empower you with practical knowledge and skills that you can apply to your own API projects. Happy coding!
+The scripts in this repository are based on the following documentation:
+1. [FastAPI](https://fastapi.tiangolo.com/) documentation.
+2. [Pika](https://pika.readthedocs.io/en/stable/) documentation.
