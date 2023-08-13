@@ -34,7 +34,7 @@ pip install -r requirements.txt
     19. [Strategy pattern](https://github.com/Aavache/fastapi-designs/blob/master/00_building_blocks/17_strategy_pattern.py)
     20. [Repository pattern](https://github.com/Aavache/fastapi-designs/blob/master/00_building_blocks/18_repository_pattern.py)
 2. [APIs](https://github.com/Aavache/fastapi-designs/tree/master/01_apis)
-    1. [RESTFul](https://github.com/Aavache/fastapi-designs/blob/master/01_apis/00_restful.py)
+    1. [RESTful](https://github.com/Aavache/fastapi-designs/blob/master/01_apis/00_restful.py)
     2. [Message Queue](https://github.com/Aavache/fastapi-designs/blob/master/01_apis/01_mesage_queue.py)
     3. [RPC](https://github.com/Aavache/fastapi-designs/blob/master/01_apis/02_rpc.py)
     4. [Event driven](https://github.com/Aavache/fastapi-designs/blob/master/01_apis/03_event_driven.py)
