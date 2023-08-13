@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
 ## Disclaimar
 
-This repository shows some API patterns and building blocks in a simplified manner, therefore it can serve as inspiration for real-case applications however it may require adaption, for instance, for some example we use a in-memory dictionary to similulate a database.
+This repository shows some API patterns and building blocks in a simplified manner, therefore it can serve as inspiration for real-case applications however it is likely to require extra adaption, for instance, we use a in-memory dictionary to similulate a database for some cases.
 
 ## References
 
