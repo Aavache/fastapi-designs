@@ -1,6 +1,6 @@
-<h1 style="text-align: center;">FastAPI Designs</h1>
+<h1 align="center">FastAPI Designs</h1>
 
-This repository contains a collection of practical examples demonstrating various concepts and best practices for building powerful APIs using FastAPI. Each example showcases a specific aspect of API development and code samples to help you understand and implement these concepts effectively.
+This repository contains practical examples demonstrating various concepts and best practices for building powerful APIs using FastAPI. Each example showcases a specific aspect of API development and code samples to help you understand and implement these concepts effectively.
 
 ## Installation
 
@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
 ## Disclaimar
 
-This repository shows some API patterns and building blocks in a simplified manner, therefore it can serve as inspiration for real-case applications however it is likely to require extra adaption, for instance, we use a in-memory dictionary to similulate a database for some cases.
+This repository shows some API patterns and building blocks in a simplified manner, therefore it can serve as inspiration for real-case applications however it is likely to require extra adaption, for instance, we use an in-memory dictionary to simulate a database for some cases.
 
 ## References
 
