@@ -41,7 +41,7 @@ pip install -r requirements.txt
     5. [Hypermedia](https://github.com/Aavache/fastapi-designs/blob/master/01_apis/04_hypermedia.py)
     6. [SOAP](https://github.com/Aavache/fastapi-designs/blob/master/01_apis/05_soap.py)
 
-## Disclaimar
+## Disclaimer
 
 This repository shows some API patterns and building blocks in a simplified manner, therefore it can serve as inspiration for real-case applications however it is likely to require extra adaption, for instance, we use an in-memory dictionary to simulate a database for some cases.
 
